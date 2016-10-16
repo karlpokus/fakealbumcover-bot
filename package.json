@@ -1,0 +1,23 @@
+{
+  "name": "fakealbumcover-bot",
+  "version": "0.1.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "node ./bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlpokus/fakealbumcover-bot.git"
+  },
+  "author": "Karl Pokus <karl.pokus@gmail.com> (https://github.com/karlpokus)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karlpokus/fakealbumcover-bot/issues"
+  },
+  "homepage": "https://github.com/karlpokus/fakealbumcover-bot#readme",
+  "dependencies": {
+    "jimp": "^0.2.27",
+    "pype-stack": "^0.1.1"
+  }
+}
