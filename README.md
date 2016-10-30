@@ -22,8 +22,8 @@ $ npm test
 - [ ] profit
 - [x] remove request dep
 - [ ] more fonts
-- [ ] parse name and title from querystring
-- [ ] resize img
+- [x] parse name and title from querystring
+- [x] resize img
 - [ ] fit text to img width
 
 # Resources
