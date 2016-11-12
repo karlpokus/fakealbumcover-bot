@@ -26,6 +26,7 @@ $ npm test
 - [x] parse name and title from querystring
 - [x] resize img
 - [ ] fit text to img width
+- [ ] web client
 
 # Resources
 - http://stackoverflow.com/questions/12740659/downloading-images-with-node-js
