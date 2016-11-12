@@ -1,18 +1,11 @@
 var pype = require('pype-stack'),
+    init = require('./lib/init'),
     wiki = require('./lib/wikiData'),
     flickr = require('./lib/flickr'),
     jimp = require('./lib/jimp'),
     done = function(req, res) {
-      [req.bandName,
-        req.albumTitle,
-        req.img.url,
-        req.img.w,
-        req.img.h,
-        'done'
-      ].forEach(function(item){
-        console.log(item);
-      });
-    }
-    stack = [wiki, flickr, jimp, done];
+      console.log(req.data);
+    },
+    stack = [init, wiki, flickr, done]; // jimp
 
 pype(null, stack, console.error)({}, {});
