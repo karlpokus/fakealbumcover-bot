@@ -4,6 +4,7 @@ var http = require('http'),
     init = require('./lib/init'),
     wiki = require('./lib/wikiData'),
     flickr = require('./lib/flickr'),
+    jimp = require('./lib/jimp'),
     server = http.createServer(),
     port = process.env.PORT || 3000;
 
@@ -17,7 +18,7 @@ server
       fs.createReadStream('./public/client.js').pipe(res);
       // baseData
     } else if (req.method === 'GET' && req.url === '/baseData') {
-      pype(null, [init, wiki, flickr], console.error, function(req, res){
+      pype(null, [init, wiki, flickr, jimp], console.error, function(req, res){
         res.end(JSON.stringify(req.data));
       })(req, res);
       // noop
