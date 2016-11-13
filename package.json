@@ -1,6 +1,6 @@
 {
   "name": "fakealbumcover-bot",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "",
   "main": "bot.js",
   "scripts": {
@@ -19,5 +19,6 @@
   "dependencies": {
     "jimp": "^0.2.27",
     "pype-stack": "^0.1.1"
-  }
+  },
+  "devDependencies": {}
 }
