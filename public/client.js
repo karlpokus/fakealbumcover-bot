@@ -19,12 +19,14 @@ function applyFontToCanvas(ctx, font, payload){
   ctx.fillText(payload.bandName, x, y);
 }
 
+/*
 function fetchFont(font) {
   var link = document.createElement('link');
   link.setAttribute("rel", "stylesheet");
   link.setAttribute("href", "http://fonts.googleapis.com/css?family=" + font.type.url);
   document.head.appendChild(link);
 }
+*/
 
 // size?
 var fonts = {
@@ -69,14 +71,14 @@ function canvasFromImage(payload, cb) {
     // font
     var font = randomFontStyle();
     console.log(font); // debugging
-    fetchFont(font);
-    setTimeout(function(){
+    //fetchFont(font);
+    //setTimeout(function(){
       applyFontToCanvas(ctx, font, payload);
 
       // done
       var dataURL = canvas.toDataURL("image/jpeg", 0.5);
       cb(dataURL);
-    }, 2000);
+    //}, 2000);
   }
   img.src = payload.img.base64;
 }
