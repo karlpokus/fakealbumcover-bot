@@ -2,7 +2,7 @@
 A bot for [r/fakealbumcovers](https://www.reddit.com/r/fakealbumcovers/). A work in progress.
 
 # test
-Note: Requires a flickr api_key to be included in `settings.json` placed in root.
+Note: Requires a flickr api key in `process.env.FLICKR_API_KEY` or `settings.json` placed in root.
 ```
 $ git clone [repo]
 $ npm test

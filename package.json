@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "node ./bot.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "deploy": "now -e FLICKR_API_KEY=@flickr_api_key"
   },
   "repository": {
     "type": "git",
