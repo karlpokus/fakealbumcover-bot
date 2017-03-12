@@ -19,15 +19,6 @@ function applyFontToCanvas(ctx, font, payload){
   ctx.fillText(payload.bandName, x, y);
 }
 
-/*
-function fetchFont(font) {
-  var link = document.createElement('link');
-  link.setAttribute("rel", "stylesheet");
-  link.setAttribute("href", "http://fonts.googleapis.com/css?family=" + font.type.url);
-  document.head.appendChild(link);
-}
-*/
-
 // size?
 var fonts = {
   type: [
@@ -59,49 +50,66 @@ function randomFontStyle() {
   };
 }
 
+createHiDPICanvas = function(w, h, ratio) {
+  function PIXEL_RATIO() {
+    var ctx = document.createElement("canvas").getContext("2d"),
+        dpr = window.devicePixelRatio || 1,
+        bsr = ctx.webkitBackingStorePixelRatio ||
+              ctx.mozBackingStorePixelRatio ||
+              ctx.msBackingStorePixelRatio ||
+              ctx.oBackingStorePixelRatio ||
+              ctx.backingStorePixelRatio || 1;
+    return dpr / bsr;
+  };
+
+  if (!ratio) {
+    ratio = PIXEL_RATIO();
+  }
+  var can = document.createElement("canvas");
+  can.width = w * ratio;
+  can.height = h * ratio;
+  can.style.width = w + "px";
+  can.style.height = h + "px";
+  can.getContext("2d").setTransform(ratio, 0, 0, ratio, 0, 0);
+  return can;
+}
+
 function canvasFromImage(payload, cb) {
   var img = new Image();
   img.onload = function () {
-    // img -> canvas
-    var canvas = document.createElement('canvas'),
+    var canvas = createHiDPICanvas(600, 600),
         ctx = canvas.getContext('2d');
-    canvas.width = payload.img.squareSize;
-    canvas.height = payload.img.squareSize;
+
     ctx.drawImage(img, 0, 0);
-    // font
     var font = randomFontStyle();
     console.log(font); // debugging
-    //fetchFont(font);
-    //setTimeout(function(){
-      applyFontToCanvas(ctx, font, payload);
+    applyFontToCanvas(ctx, font, payload);
 
-      // done
-      var dataURL = canvas.toDataURL("image/jpeg", 0.5);
-      cb(dataURL);
-    //}, 2000);
+    var dataURL = canvas.toDataURL("image/jpeg", 1);
+    cb(dataURL);
   }
   img.src = payload.img.base64;
 }
 
 // Event
 $('#randomize').on('click', function(){
-  loader.render('Fetching data from server..');
+  loader.render('working');
 
   $.get('/baseData', function(data){
-    loader.render('Creating the album..');
-
     var payload = JSON.parse(data);
     console.log(payload); // debugging
 
     canvasFromImage(payload, function(dataURL){
       var img = new Image();
       img.onload = function() {
-        // test
         $('#album').empty().append(img);
         loader.render('done');
       }
       img.src = dataURL;
     });
-
   });
+});
+
+$('#share').on('click', function(){
+  $(this).after('<p>https://fakealbumcoverbot.com/albumID</p>');
 });

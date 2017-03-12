@@ -17,19 +17,13 @@ $ npm test
 - [x] get text data
 - [x] get img
 - [x] crop img to square
-- [x] Apply band name and album title
-- [ ] post to r/fakealbumcovers
+- [x] send data to client
+- [x] [adjust canvas ppi](http://stackoverflow.com/questions/15661339/how-do-i-fix-blurry-text-in-my-html5-canvas)
+- [x] apply band name
+- [ ] apply album title
+- [ ] share url
 - [ ] ?
 - [ ] profit
-- [x] remove request dep
-- [ ] more fonts
-- [x] parse name and title from querystring
-- [x] resize img
-- [ ] fit text to img width
-- [ ] web client
-
-# Resources
-- http://stackoverflow.com/questions/12740659/downloading-images-with-node-js
 
 # Licence
 MIT

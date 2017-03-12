@@ -7,24 +7,56 @@
   <style>
     body {
       font-family:monospace;
-      margin:10px;
+      margin:0;
     }
-    h1 {
-      font-size:22px;
+    .header {
+      background:black;
+    }
+    .header h1 {
+      color:white;
       font-weight:400;
-      margin:10px 0;
+      font-size:16px;
+      margin:0;
+    }
+    .wrapper {
+      padding:10px;
+      margin:0 auto;
+    }
+    #randomize {}
+    #loader {
+      color:#777;
+      float:right;
     }
     #album {
-      margin:20px 0;
+      width:300px;
+      margin:10px 0;
+    }
+    #album img {
+      width:100%;
+    }
+    @media (min-width: 768px) {
+      .wrapper {
+        max-width:768px;
+      }
+      #album {
+        width:600px;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>r/fakealbumcoverbot</h1>
-  <button id="randomize">Randomize</button>
-  <span id="loader"></span>
-  <div id="album"></div>
-
+  <div class="header">
+    <div class="wrapper">
+      <h1>r/fakealbumcoverbot
+        <span id="loader">idle</span>
+      </h1>
+    </div>
+  </div>
+  <div class="wrapper">
+    <button id="randomize">Randomize</button>
+    <button id="share">Share</button>
+    <div id="album"></div>
+  </div>
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="/public/client.js"></script>
 </body>
